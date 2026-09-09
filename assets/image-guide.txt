@@ -1,0 +1,66 @@
+CAKE HOUSE GOREGAON — IMAGE GUIDE
+==================================
+This file lists every image used on the website and exactly where it appears.
+To change a photo later: save your NEW photo with the EXACT same file name
+below (same spelling, same ".jpg"), and drop it into this "assets" folder,
+replacing the old one. Keep a similar shape/orientation (noted below) so it
+lines up nicely in that spot — you don't need to touch the website code at all.
+
+--------------------------------------------------------------------
+1. hero-signature-cake.jpg
+   Where: Very first big banner image on the homepage (top of page)
+   Shape: Square-ish, works best as a strong, close-up, well-lit cake photo
+   Tip:   This is the FIRST thing visitors see — pick your most impressive cake
+
+2. about-section-cake.jpg
+   Where: "Our Story" section, the photo next to the about text
+   Shape: Portrait (tall), roughly 4:5
+
+3. instagram-qr-code.jpg
+   Where: "Ready to order your dream cake?" section, small card with the QR code
+   Shape: Square
+   Note:  This is your Instagram QR code — only replace if you get a new one
+
+--------------------------------------------------------------------
+GALLERY PHOTOS ("Our Creations" section)
+--------------------------------------------------------------------
+4. gallery-rich-chocolate-truffle-cake.jpg
+   Where: Big/large tile in the gallery grid (top-left, larger square)
+
+5. gallery-chocolate-oreo-cake.jpg
+   Where: Gallery grid
+
+6. gallery-lavender-butterfly-cake.jpg
+   Where: Gallery grid
+
+7. gallery-ivory-lily-ribbon-cake.jpg
+   Where: Gallery grid
+
+8. gallery-midnight-moon-stars-cake.jpg
+   Where: Gallery grid
+
+9. gallery-ivory-red-bow-cake.jpg
+   Where: Gallery grid
+
+10. gallery-chocolate-drip-cone-cake.jpg
+    Where: Gallery grid
+
+11. gallery-assorted-cake-slices.jpg
+    Where: Gallery grid
+
+   Shape (all gallery photos): Square works best — the grid crops to a square
+   automatically, so a photo where the cake is centred looks best.
+
+--------------------------------------------------------------------
+NOTES
+--------------------------------------------------------------------
+- Keep every image inside THIS "assets" folder — nothing else needs to move.
+- Don't rename any file differently from the list above, or the website
+  won't be able to find it.
+- A few photos from your original zip file were left out on purpose because
+  they had another bakery's name/logo, a customer's personal name, or a
+  chocolate brand name (like "Milka") visible on the cake or in the photo.
+  If you'd like, send me fresh photos of your own cakes (with nothing else
+  written on them) and I can swap them in, or add more to the gallery.
+- Recommended photo size: roughly 1200x1200px or larger, so images stay sharp
+  on big screens.

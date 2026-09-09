@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake House Goregaon | Handcrafted Cakes, Made to Order</title>
+<meta name="description" content="Cake House Goregaon — handcrafted, custom-designed cakes for birthdays, anniversaries and every sweet celebration. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --cream:#fdf7f2;
+    --cream-deep:#f7ede4;
+    --pink:#f6dde2;
+    --pink-deep:#eec3cc;
+    --rose-gold:#cf9d8c;
+    --rose-gold-deep:#b9816f;
+    --gold:#d9b479;
+    --gold-soft:#ecd9ac;
+    --pistachio:#c9d8bd;
+    --pistachio-deep:#a9c096;
+    --ink:#4a3a37;
+    --ink-soft:#7a6a63;
+    --white:#ffffff;
+    --shadow: 0 20px 50px rgba(90,60,50,0.12);
+    --shadow-soft: 0 10px 30px rgba(90,60,50,0.08);
+    --radius: 22px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--pink-deep); color:var(--ink); }
+
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:.3px; }
+  .eyebrow{
+    font-family:'Marcellus', serif;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.72rem;
+    color:var(--rose-gold-deep);
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .container{ width:100%; max-width:1180px; margin:0 auto; padding:0 24px; }
+  section{ position:relative; }
+
+  /* ---------- decorative blobs ---------- */
+  .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.55; z-index:0; pointer-events:none; }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- divider ornament ---------- */
+  .ornament{ display:flex; align-items:center; justify-content:center; gap:10px; margin:0 auto 18px; width:fit-content; }
+  .ornament span{ width:34px; height:1px; background:linear-gradient(90deg, transparent, var(--rose-gold)); }
+  .ornament span:last-child{ background:linear-gradient(90deg, var(--rose-gold), transparent); }
+  .ornament svg{ width:14px; height:14px; color:var(--rose-gold-deep); }
+
+  /* ================= HEADER ================= */
+  header{
+    position:fixed; top:0; left:0; width:100%; z-index:1000;
+    background:rgba(253,247,242,0);
+    transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+    padding:22px 0;
+  }
+  header.scrolled{
+    background:rgba(253,247,242,.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 6px 24px rgba(90,60,50,.08);
+    padding:12px 0;
+  }
+  .nav-wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{ font-family:'Cormorant Garamond', serif; font-size:1.5rem; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .logo em{ font-style:normal; color:var(--rose-gold-deep); }
+  .nav-links{ display:flex; align-items:center; gap:38px; list-style:none; }
+  .nav-links a{
+    font-size:.86rem; letter-spacing:.5px; color:var(--ink-soft); position:relative; padding:4px 0;
+    transition:color .3s ease;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--rose-gold-deep);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+    color:var(--white); padding:11px 22px; border-radius:40px; font-size:.82rem; letter-spacing:.4px;
+    box-shadow:0 8px 20px rgba(185,129,111,.35);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(185,129,111,.45); }
+  .nav-cta svg{ width:16px; height:16px; }
+
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; }
+  .burger span{ width:26px; height:2px; background:var(--ink); transition:.3s; border-radius:2px; }
+  .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu{
+    position:fixed; inset:0; background:var(--cream); z-index:1050;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:34px;
+    transform:translateY(-110%); transition:transform .5s cubic-bezier(.7,0,.3,1);
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu a{ font-family:'Cormorant Garamond', serif; font-size:1.7rem; color:var(--ink); }
+  .mobile-menu .nav-cta{ margin-top:10px; }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden;
+    padding-top:110px;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+  }
+  .hero-bg img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.02); }
+  .hero-bg::after{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(100deg, rgba(50,30,28,.62) 8%, rgba(50,30,28,.42) 40%, rgba(80,50,45,.18) 65%, rgba(246,221,226,.15) 100%);
+  }
+  .hero-content{ position:relative; z-index:2; color:#fff; max-width:640px; padding-bottom:60px; }
+  .hero .eyebrow{ color:var(--gold-soft); }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.05; margin:18px 0 20px; color:#fff;
+    text-shadow:0 4px 30px rgba(0,0,0,.15);
+  }
+  .hero h1 i{ font-style:italic; color:var(--gold-soft); }
+  .hero p{ font-size:1.05rem; line-height:1.7; color:rgba(255,255,255,.88); max-width:480px; margin-bottom:34px; font-weight:300; }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border-radius:50px;
+    font-size:.88rem; letter-spacing:.5px; font-weight:500; transition:transform .35s ease, box-shadow .35s ease;
+    cursor:pointer; border:none;
+  }
+  .btn svg{ width:18px; height:18px; flex-shrink:0; }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold), var(--rose-gold-deep));
+    color:#fff; box-shadow:0 12px 30px rgba(185,129,111,.4);
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(185,129,111,.5); }
+  .btn-ghost{
+    background:rgba(255,255,255,.14); color:#fff; border:1.4px solid rgba(255,255,255,.55);
+    backdrop-filter:blur(6px);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,.24); transform:translateY(-3px); }
+
+  .hero-scroll{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:8px; color:#fff; opacity:.85;
+  }
+  .hero-scroll .line{ width:1px; height:38px; background:linear-gradient(#fff, transparent); animation:scrollpulse 1.8s ease infinite; }
+  @keyframes scrollpulse{ 0%{opacity:.2;} 50%{opacity:1;} 100%{opacity:.2;} }
+
+  /* ================= SECTION TITLES ================= */
+  .sec-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .sec-head h2{ font-size:clamp(2rem, 4vw, 2.9rem); color:var(--ink); margin:14px 0 16px; }
+  .sec-head p{ color:var(--ink-soft); font-size:1rem; line-height:1.7; font-weight:300; }
+
+  /* ================= ABOUT ================= */
+  .about{ padding:130px 0 110px; background:var(--cream); }
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .about-media{ position:relative; }
+  .about-media .frame{
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    aspect-ratio:4/5;
+  }
+  .about-media .frame img{ transition:transform 1.2s ease; }
+  .about-media:hover .frame img{ transform:scale(1.06); }
+  .about-media .tag{
+    position:absolute; bottom:-26px; right:-26px; background:var(--white);
+    padding:20px 26px; border-radius:18px; box-shadow:var(--shadow-soft);
+    text-align:center; border:1px solid var(--pink);
+  }
+  .about-media .tag .num{ font-family:'Cormorant Garamond', serif; font-size:1.9rem; color:var(--rose-gold-deep); font-weight:600; }
+  .about-media .tag .lbl{ font-size:.68rem; letter-spacing:1px; color:var(--ink-soft); text-transform:uppercase; margin-top:2px; }
+  .about-text .eyebrow{ margin-bottom:14px; display:block; }
+  .about-text h2{ font-size:clamp(2rem,4vw,2.8rem); margin-bottom:22px; }
+  .about-text p{ color:var(--ink-soft); line-height:1.85; margin-bottom:18px; font-weight:300; }
+  .about-list{ list-style:none; margin-top:26px; display:flex; flex-direction:column; gap:14px; }
+  .about-list li{ display:flex; align-items:center; gap:12px; font-size:.95rem; color:var(--ink); }
+  .about-list .dot{
+    width:26px; height:26px; border-radius:50%; background:var(--pink); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .about-list svg{ width:13px; height:13px; color:var(--rose-gold-deep); }
+
+  /* ================= SPECIALTIES ================= */
+  .specialties{ padding:110px 0; background:linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%); }
+  .spec-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:26px; }
+  .spec-card{
+    background:var(--white); border-radius:var(--radius); padding:38px 26px; text-align:center;
+    box-shadow:var(--shadow-soft); transition:transform .4s ease, box-shadow .4s ease;
+    border:1px solid rgba(207,157,140,.12);
+  }
+  .spec-card:hover{ transform:translateY(-8px); box-shadow:var(--shadow); }
+  .spec-icon{
+    width:64px; height:64px; border-radius:50%; margin:0 auto 20px; display:flex; align-items:center; justify-content:center;
+  }
+  .spec-icon svg{ width:28px; height:28px; }
+  .spec-card:nth-child(1) .spec-icon{ background:var(--pink); }
+  .spec-card:nth-child(1) svg{ color:#c26b7d; }
+  .spec-card:nth-child(2) .spec-icon{ background:var(--gold-soft); }
+  .spec-card:nth-child(2) svg{ color:#b0863a; }
+  .spec-card:nth-child(3) .spec-icon{ background:var(--pistachio); }
+  .spec-card:nth-child(3) svg{ color:#5f7a4c; }
+  .spec-card:nth-child(4) .spec-icon{ background:#e4d3e8; }
+  .spec-card:nth-child(4) svg{ color:#8a5f9c; }
+  .spec-card h3{ font-family:'Cormorant Garamond', serif; font-size:1.3rem; margin-bottom:10px; font-weight:600; }
+  .spec-card p{ font-size:.86rem; color:var(--ink-soft); line-height:1.6; font-weight:300; }
+
+  /* ================= GALLERY ================= */
+  .gallery{ padding:120px 0; background:var(--cream); }
+  .gal-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:200px; gap:18px;
+  }
+  .gal-item{
+    position:relative; border-radius:16px; overflow:hidden; cursor:pointer; box-shadow:var(--shadow-soft);
+  }
+  .gal-item img{ transition:transform .7s ease; }
+  .gal-item:hover img{ transform:scale(1.1); }
+  .gal-item .overlay{
+    position:absolute; inset:0; background:linear-gradient(180deg, rgba(40,25,22,0) 45%, rgba(40,25,22,.72) 100%);
+    display:flex; align-items:flex-end; padding:16px; opacity:0; transition:opacity .4s ease;
+  }
+  .gal-item:hover .overlay{ opacity:1; }
+  .gal-item .overlay span{ color:#fff; font-family:'Cormorant Garamond', serif; font-size:1.05rem; }
+  .gal-item.big{ grid-column:span 2; grid-row:span 2; }
+
+  /* lightbox */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(35,22,20,.92); z-index:2000; display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden; transition:opacity .35s ease; padding:30px;
+  }
+  .lightbox.open{ opacity:1; visibility:visible; }
+  .lightbox img{ max-width:min(880px, 92vw); max-height:82vh; width:auto; height:auto; border-radius:12px; box-shadow:0 30px 70px rgba(0,0,0,.5); object-fit:contain; }
+  .lightbox .lb-close{
+    position:absolute; top:26px; right:30px; color:#fff; font-size:1.6rem; cursor:pointer; width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,.1);
+    transition:background .3s ease;
+  }
+  .lightbox .lb-close:hover{ background:rgba(255,255,255,.22); }
+  .lightbox .lb-cap{ position:absolute; bottom:34px; left:0; width:100%; text-align:center; color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-size:1.15rem; }
+
+  /* ================= WHY US ================= */
+  .why{ padding:110px 0; background:linear-gradient(180deg, var(--cream-deep), var(--pink) 120%); position:relative; overflow:hidden; }
+  .why-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; text-align:center; }
+  .why-item{ padding:20px 14px; }
+  .why-num{ font-family:'Cormorant Garamond', serif; font-size:2.6rem; color:var(--rose-gold-deep); margin-bottom:10px; font-style:italic; }
+  .why-item h3{ font-family:'Marcellus', serif; font-size:1rem; letter-spacing:.4px; margin-bottom:10px; color:var(--ink); }
+  .why-item p{ font-size:.86rem; color:var(--ink-soft); line-height:1.7; font-weight:300; }
+
+  /* ================= CTA / CONTACT ================= */
+  .cta{ padding:120px 0; background:var(--cream); }
+  .cta-panel{
+    background:linear-gradient(120deg, #efc9a9 0%, var(--rose-gold) 45%, var(--rose-gold-deep) 100%);
+    border-radius:32px; padding:70px 60px; position:relative; overflow:hidden;
+    display:grid; grid-template-columns:1.3fr 1fr; gap:50px; align-items:center;
+    box-shadow:0 30px 70px rgba(185,129,111,.35);
+  }
+  .cta-panel::before{
+    content:''; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:rgba(255,255,255,.08); top:-140px; right:-100px;
+  }
+  .cta-text .eyebrow{ color:rgba(255,255,255,.85); }
+  .cta-text h2{ color:#fff; font-size:clamp(1.9rem,3.6vw,2.6rem); margin:14px 0 18px; }
+  .cta-text p{ color:rgba(255,255,255,.9); line-height:1.8; margin-bottom:30px; font-weight:300; max-width:440px; }
+  .cta .btn-primary{ background:#fff; color:var(--rose-gold-deep); box-shadow:0 12px 26px rgba(0,0,0,.18); }
+  .cta .btn-primary:hover{ background:#fff; color:var(--rose-gold-deep); }
+  .cta .btn-ghost{ border-color:rgba(255,255,255,.6); }
+
+  .qr-card{
+    background:#fff; border-radius:22px; padding:26px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,.18);
+    position:relative; z-index:2;
+  }
+  .qr-card img{ width:150px; height:150px; margin:0 auto 14px; border-radius:14px; }
+  .qr-card p{ font-family:'Marcellus', serif; font-size:.82rem; color:var(--ink); letter-spacing:.3px; }
+  .qr-card p b{ color:var(--rose-gold-deep); display:block; margin-top:4px; font-size:.9rem; }
+
+  /* ================= FOOTER ================= */
+  footer{ background:#3a2c28; color:#e9dcd6; padding:70px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:50px; margin-bottom:50px; }
+  .foot-logo{ font-family:'Cormorant Garamond', serif; font-size:1.7rem; color:#fff; margin-bottom:14px; }
+  .foot-logo em{ font-style:normal; color:var(--gold-soft); }
+  .foot-col p{ font-size:.88rem; line-height:1.8; color:#cbb9b1; font-weight:300; max-width:320px; }
+  .foot-col h4{ font-family:'Marcellus', serif; font-size:.85rem; letter-spacing:1px; text-transform:uppercase; color:var(--gold-soft); margin-bottom:18px; }
+  .foot-links{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .foot-links a{ font-size:.9rem; color:#e9dcd6; opacity:.85; transition:opacity .3s ease, padding .3s ease; }
+  .foot-links a:hover{ opacity:1; padding-left:4px; }
+  .foot-social{ display:flex; gap:14px; margin-top:18px; }
+  .foot-social a{
+    width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .foot-social a:hover{ background:var(--rose-gold); transform:translateY(-3px); }
+  .foot-social svg{ width:18px; height:18px; color:#fff; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,.1); padding-top:24px; text-align:center; font-size:.8rem; color:#b6a49c; }
+
+  /* floating whatsapp */
+  .floating-wa{
+    position:fixed; bottom:26px; right:26px; z-index:900; width:60px; height:60px; border-radius:50%;
+    background:linear-gradient(135deg,#3fbf60,#25a244); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(37,162,68,.45); animation:floatbtn 2.6s ease-in-out infinite;
+  }
+  .floating-wa svg{ width:28px; height:28px; color:#fff; }
+  @keyframes floatbtn{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 980px){
+    .about-grid{ grid-template-columns:1fr; gap:60px; }
+    .about-media{ max-width:440px; margin:0 auto; width:100%; }
+    .spec-grid{ grid-template-columns:repeat(2,1fr); }
+    .why-grid{ grid-template-columns:repeat(2,1fr); }
+    .gal-grid{ grid-template-columns:repeat(3,1fr); grid-auto-rows:160px; }
+    .gal-item.big{ grid-column:span 2; grid-row:span 2; }
+    .cta-panel{ grid-template-columns:1fr; padding:50px 34px; text-align:center; }
+    .cta-text p{ margin-left:auto; margin-right:auto; }
+    .qr-card{ max-width:260px; margin:0 auto; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .foot-grid .foot-col:first-child{ grid-column:1/-1; }
+  }
+
+  @media (max-width: 720px){
+    .nav-links{ display:none; }
+    .burger{ display:flex; }
+    .nav-cta.desktop-only{ display:none; }
+    .hero{ padding-top:120px; min-height:96vh; }
+    .hero-content{ max-width:100%; }
+    .hero p{ font-size:.98rem; }
+    .btn-row{ width:100%; }
+    .btn{ flex:1; justify-content:center; text-align:center; }
+    .about, .specialties, .gallery, .why, .cta{ padding:80px 0; }
+    .spec-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+    .spec-card{ padding:28px 16px; }
+    .gal-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; gap:12px; }
+    .gal-item.big{ grid-column:span 2; grid-row:span 1; aspect-ratio:16/10; height:auto; }
+    .why-grid{ grid-template-columns:1fr 1fr; gap:20px; }
+    .foot-grid{ grid-template-columns:1fr; gap:36px; text-align:left; }
+    .cta-panel{ border-radius:22px; }
+    .about-media .tag{ right:10px; bottom:-20px; padding:14px 18px; }
+    .container{ padding:0 20px; }
+  }
+
+  @media (max-width: 460px){
+    .hero h1{ font-size:2.3rem; }
+    .spec-grid{ grid-template-columns:1fr 1fr; }
+    .gal-grid{ grid-template-columns:1fr 1fr; }
+    .btn-row{ flex-direction:column; }
+    .btn{ width:100%; }
+    .cta-panel{ padding:40px 22px; }
+    .floating-wa{ width:52px; height:52px; bottom:18px; right:18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="#home" class="logo">Cake House <em>Goregaon</em></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#creations">Creations</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta desktop-only" href="https://wa.me/918806891006?text=Hi!%20I'd%20love%20to%20order%20a%20cake%20from%20Cake%20House%20Goregaon" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.4 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.24 8.25-8.24M8.53 7.13c-.16 0-.42.06-.64.3-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.76 2.79 4.35 3.8 2.15.83 2.59.7 3.06.66.46-.05 1.5-.61 1.71-1.2.21-.6.21-1.11.15-1.22-.07-.11-.26-.18-.55-.32-.28-.14-1.71-.84-1.98-.94-.26-.1-.45-.14-.65.14-.19.28-.75.94-.92 1.13-.16.19-.33.21-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.72-1.36-1.62-1.53-1.9-.16-.27-.02-.42.13-.57.14-.14.3-.36.45-.54.14-.18.19-.3.29-.5.1-.19.05-.37-.03-.51-.07-.14-.6-1.47-.83-1.98-.19-.44-.4-.44-.6-.45z"/></svg>
+      WhatsApp
+    </a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#creations">Creations</a>
+  <a href="#why">Why Us</a>
+  <a href="#contact">Contact</a>
+  <a class="nav-cta" href="https://wa.me/918806891006?text=Hi!%20I'd%20love%20to%20order%20a%20cake%20from%20Cake%20House%20Goregaon" target="_blank" rel="noopener">Order on WhatsApp</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-bg"><img src="assets/hero-signature-cake.jpg" alt="Signature chocolate rose cake by Cake House Goregaon"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Goregaon, Mumbai</span>
+      <h1>Cakes made<br> to feel <i>special</i></h1>
+      <p>Handcrafted, custom-designed cakes for birthdays, anniversaries and every celebration worth savouring — baked fresh and finished by hand, just for you.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://wa.me/918806891006?text=Hi!%20I'd%20love%20to%20order%20a%20cake%20from%20Cake%20House%20Goregaon" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.4 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.24 8.25-8.24M8.53 7.13c-.16 0-.42.06-.64.3-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.76 2.79 4.35 3.8 2.15.83 2.59.7 3.06.66.46-.05 1.5-.61 1.71-1.2.21-.6.21-1.11.15-1.22-.07-.11-.26-.18-.55-.32-.28-.14-1.71-.84-1.98-.94-.26-.1-.45-.14-.65.14-.19.28-.75.94-.92 1.13-.16.19-.33.21-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.72-1.36-1.62-1.53-1.9-.16-.27-.02-.42.13-.57.14-.14.3-.36.45-.54.14-.18.19-.3.29-.5.1-.19.05-.37-.03-.51-.07-.14-.6-1.47-.83-1.98-.19-.44-.4-.44-.6-.45z"/></svg>
+          Order on WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#creations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M4 10L12 4L20 10M4 10H20M20 10V20M9 20V14H15V20"/></svg>
+          View Our Creations
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span style="font-size:.7rem;letter-spacing:2px;">SCROLL</span><span class="line"></span></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <div class="frame"><img src="assets/about-section-cake.jpg" alt="Fresh strawberry cake handcrafted by Cake House Goregaon"></div>
+      <div class="tag">
+        <div class="num">100%</div>
+        <div class="lbl">Made to Order</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>Baked with heart, <br>designed with detail</h2>
+      <p>Cake House Goregaon began with a simple idea — celebrations deserve cakes that taste as beautiful as they look. Every order is baked fresh in small batches and finished entirely by hand, from the first layer to the very last flower.</p>
+      <p>Whether it's an intimate birthday at home or a big celebration with family, we work closely with you to design a cake that fits the moment — in flavour, in colour, and in feel.</p>
+      <ul class="about-list">
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></span>Freshly baked, never frozen</li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></span>Fully customised designs & flavours</li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></span>Easy ordering, right on WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPECIALTIES ================= -->
+<section class="specialties">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What We Create</span>
+      <h2>A cake for every occasion</h2>
+      <p>From candlelit birthdays to milestone anniversaries, every cake is designed around your celebration.</p>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card reveal">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v4M9 3l1.5 2M15 3l-1.5 2M4 21h16M5 21v-6a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v6M5 15c1 0 1.5-1 2.5-1s1.5 1 2.5 1 1.5-1 2.5-1 1.5 1 2.5 1 1.5-1 2.5-1"/></svg></div>
+        <h3>Birthday Cakes</h3>
+        <p>Playful, elegant or themed — designed around the birthday you're picturing.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-8-4.5-8-10.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 8 4.5C20 16.5 12 21 12 21z"/></svg></div>
+        <h3>Anniversary Cakes</h3>
+        <p>Romantic, refined designs to mark the milestones worth celebrating.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2l.9-5.5-4-3.9 5.5-.8L12 3z"/></svg></div>
+        <h3>Custom Theme Cakes</h3>
+        <p>Have a theme in mind? We sculpt, paint and pipe it to life on your cake.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v4.7l3 1.8"/></svg></div>
+        <h3>Cupcakes & Desserts</h3>
+        <p>Petite treats and dessert tables to complement your main celebration cake.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="creations">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Creations</span>
+      <h2>A few of our favourites</h2>
+      <p>Every cake is one-of-a-kind — here's a small taste of what we love to create.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item big reveal" data-cap="Rich Chocolate Truffle Drip Cake"><img src="assets/gallery-rich-chocolate-truffle-cake.jpg" alt="Rich chocolate truffle drip cake"><div class="overlay"><span>Chocolate Truffle Drip</span></div></div>
+      <div class="gal-item reveal" data-cap="Chocolate Oreo Drip Cake"><img src="assets/gallery-chocolate-oreo-cake.jpg" alt="Chocolate Oreo drip cake"><div class="overlay"><span>Oreo Chocolate Drip</span></div></div>
+      <div class="gal-item reveal" data-cap="Lavender Butterfly Floral Cake"><img src="assets/gallery-lavender-butterfly-cake.jpg" alt="Lavender butterfly floral cake"><div class="overlay"><span>Lavender Butterfly</span></div></div>
+      <div class="gal-item reveal" data-cap="Ivory Lily & Ribbon Cake"><img src="assets/gallery-ivory-lily-ribbon-cake.jpg" alt="Ivory cake with chocolate lily and ribbon"><div class="overlay"><span>Ivory Lily & Ribbon</span></div></div>
+      <div class="gal-item reveal" data-cap="Midnight Moon & Stars Cake"><img src="assets/gallery-midnight-moon-stars-cake.jpg" alt="Midnight blue moon and stars cake"><div class="overlay"><span>Midnight Moon & Stars</span></div></div>
+      <div class="gal-item reveal" data-cap="Ivory Cake with Red Bows"><img src="assets/gallery-ivory-red-bow-cake.jpg" alt="Ivory cake with red bow details"><div class="overlay"><span>Ivory Red Bow</span></div></div>
+      <div class="gal-item reveal" data-cap="Chocolate Drip Celebration Cake"><img src="assets/gallery-chocolate-drip-cone-cake.jpg" alt="Chocolate drip celebration cake"><div class="overlay"><span>Chocolate Celebration</span></div></div>
+      <div class="gal-item reveal" data-cap="Assorted Layered Cake Slices"><img src="assets/gallery-assorted-cake-slices.jpg" alt="Assorted layered cake slices"><div class="overlay"><span>Assorted Slices</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lb-close" id="lbClose">&times;</div>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<!-- ================= WHY US ================= -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Cake House Goregaon</span>
+      <h2>What makes us different</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <h3>Made Fresh to Order</h3>
+        <p>Every cake is baked only after it's ordered — never pre-made, never frozen.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">02</div>
+        <h3>Fully Customisable</h3>
+        <p>Choose your flavour, design, colours and message — we bring your idea to life.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">03</div>
+        <h3>Hygienically Prepared</h3>
+        <p>Prepared with care in a clean kitchen, using quality ingredients throughout.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">04</div>
+        <h3>Easy WhatsApp Ordering</h3>
+        <p>Share your requirements on WhatsApp and we'll guide you through the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA / CONTACT ================= -->
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div class="cta-text">
+        <span class="eyebrow">Let's Create Something Sweet</span>
+        <h2>Ready to order your dream cake?</h2>
+        <p>Tell us the occasion, the flavour and the look you have in mind — we'll take care of the rest. Message us on WhatsApp to get started.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://wa.me/918806891006?text=Hi!%20I'd%20love%20to%20order%20a%20cake%20from%20Cake%20House%20Goregaon" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.4 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.24 8.25-8.24M8.53 7.13c-.16 0-.42.06-.64.3-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.76 2.79 4.35 3.8 2.15.83 2.59.7 3.06.66.46-.05 1.5-.61 1.71-1.2.21-.6.21-1.11.15-1.22-.07-.11-.26-.18-.55-.32-.28-.14-1.71-.84-1.98-.94-.26-.1-.45-.14-.65.14-.19.28-.75.94-.92 1.13-.16.19-.33.21-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.72-1.36-1.62-1.53-1.9-.16-.27-.02-.42.13-.57.14-.14.3-.36.45-.54.14-.18.19-.3.29-.5.1-.19.05-.37-.03-.51-.07-.14-.6-1.47-.83-1.98-.19-.44-.4-.44-.6-.45z"/></svg>
+            Message on WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="https://instagram.com/cake__house__goregaon" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            @cake__house__goregaon
+          </a>
+        </div>
+      </div>
+      <div class="qr-card">
+        <img src="assets/instagram-qr-code.jpg" alt="Scan to follow Cake House Goregaon on Instagram">
+        <p>Scan to follow us<b>@cake__house__goregaon</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-logo">Cake House <em>Goregaon</em></div>
+        <p>Handcrafted, custom-designed cakes for birthdays, anniversaries and every celebration in between — baked fresh, just for you.</p>
+        <div class="foot-social">
+          <a href="https://wa.me/918806891006" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.4 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.24 8.25-8.24M8.53 7.13c-.16 0-.42.06-.64.3-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.76 2.79 4.35 3.8 2.15.83 2.59.7 3.06.66.46-.05 1.5-.61 1.71-1.2.21-.6.21-1.11.15-1.22-.07-.11-.26-.18-.55-.32-.28-.14-1.71-.84-1.98-.94-.26-.1-.45-.14-.65.14-.19.28-.75.94-.92 1.13-.16.19-.33.21-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.72-1.36-1.62-1.53-1.9-.16-.27-.02-.42.13-.57.14-.14.3-.36.45-.54.14-.18.19-.3.29-.5.1-.19.05-.37-.03-.51-.07-.14-.6-1.47-.83-1.98-.19-.44-.4-.44-.6-.45z"/></svg>
+          </a>
+          <a href="https://instagram.com/cake__house__goregaon" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <ul class="foot-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#creations">Our Creations</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Get in Touch</h4>
+        <ul class="foot-links">
+          <li>Goregaon, Mumbai</li>
+          <li><a href="https://wa.me/918806891006" target="_blank" rel="noopener">+91 88068 91006</a></li>
+          <li><a href="https://instagram.com/cake__house__goregaon" target="_blank" rel="noopener">@cake__house__goregaon</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      &copy; <span id="year"></span> Cake House Goregaon. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<a class="floating-wa" href="https://wa.me/918806891006?text=Hi!%20I'd%20love%20to%20order%20a%20cake%20from%20Cake%20House%20Goregaon" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.4 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.24 8.25-8.24M8.53 7.13c-.16 0-.42.06-.64.3-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.76 2.79 4.35 3.8 2.15.83 2.59.7 3.06.66.46-.05 1.5-.61 1.71-1.2.21-.6.21-1.11.15-1.22-.07-.11-.26-.18-.55-.32-.28-.14-1.71-.84-1.98-.94-.26-.1-.45-.14-.65.14-.19.28-.75.94-.92 1.13-.16.19-.33.21-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.72-1.36-1.62-1.53-1.9-.16-.27-.02-.42.13-.57.14-.14.3-.36.45-.54.14-.18.19-.3.29-.5.1-.19.05-.37-.03-.51-.07-.14-.6-1.47-.83-1.98-.19-.44-.4-.44-.6-.45z"/></svg>
+</a>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  document.querySelectorAll('.gal-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = item.dataset.cap || '';
+      lightbox.classList.add('open');
+    });
+  });
+  const closeLb = () => lightbox.classList.remove('open');
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLb(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
